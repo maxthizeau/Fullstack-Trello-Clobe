@@ -1,0 +1,18 @@
+import { IResolvers } from "@graphql-tools/utils/Interfaces"
+import { Context } from "@src/graphql/prismaContext"
+import { getWhereSortByFirstSkipRequest } from "@src/graphql/resolvers/resolverFunctions"
+
+const %%lname%%Queries: IResolvers = {
+  Query: {    
+    %%lname%%: async (_parent, args, context: Context) =>
+      await context.prisma.%%lname%%.findUnique({ where: { id: Number(args.where.id) } }),    
+    all%%cname%%s: async (_parent, args, context: Context) => {
+      // Generate all the args (where, first, skip, sortBy)
+      const queryArgs = getWhereSortByFirstSkipRequest(args)
+//%%generateInclude%%
+      const result = await context.prisma.%%lname%%.findMany(queryArgs)
+      return result
+    },
+  },
+}
+export default %%lname%%Queries

@@ -1,0 +1,3 @@
+{
+  "greetings": "Bonjour, vous utilisez Apollo Client version <b>{{version}}</b>"
+}

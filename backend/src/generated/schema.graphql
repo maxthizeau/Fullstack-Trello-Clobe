@@ -1,0 +1,835 @@
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""
+A time string at UTC, such as 10:15:30Z, compliant with the `full-time` format outlined in section 5.6 of the RFC 3339profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar Time
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+"""
+The javascript `Date` as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
+"""
+scalar Timestamp
+
+"""
+A field whose value is a UTC Offset: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+"""
+scalar UtcOffset
+
+"""
+A string representing a duration conforming to the ISO8601 standard,
+such as: P1W1DT13H23M34S
+P is the duration designator (for period) placed at the start of the duration representation.
+Y is the year designator that follows the value for the number of years.
+M is the month designator that follows the value for the number of months.
+W is the week designator that follows the value for the number of weeks.
+D is the day designator that follows the value for the number of days.
+T is the time designator that precedes the time components of the representation.
+H is the hour designator that follows the value for the number of hours.
+M is the minute designator that follows the value for the number of minutes.
+S is the second designator that follows the value for the number of seconds.
+
+Note the time designator, T, that precedes the time value.
+
+Matches moment.js, Luxon and DateFns implementations
+,/. is valid for decimal places and +/- is a valid prefix
+"""
+scalar Duration
+
+"""
+A string representing a duration conforming to the ISO8601 standard,
+such as: P1W1DT13H23M34S
+P is the duration designator (for period) placed at the start of the duration representation.
+Y is the year designator that follows the value for the number of years.
+M is the month designator that follows the value for the number of months.
+W is the week designator that follows the value for the number of weeks.
+D is the day designator that follows the value for the number of days.
+T is the time designator that precedes the time components of the representation.
+H is the hour designator that follows the value for the number of hours.
+M is the minute designator that follows the value for the number of minutes.
+S is the second designator that follows the value for the number of seconds.
+
+Note the time designator, T, that precedes the time value.
+
+Matches moment.js, Luxon and DateFns implementations
+,/. is valid for decimal places and +/- is a valid prefix
+"""
+scalar ISO8601Duration
+
+"""
+A local date string (i.e., with no associated timezone) in `YYYY-MM-DD` format, e.g. `2020-01-01`.
+"""
+scalar LocalDate
+
+"""
+A local time string (i.e., with no associated timezone) in 24-hr `HH:mm[:ss[.SSS]]` format, e.g. `14:25` or `14:25:06` or `14:25:06.123`.
+"""
+scalar LocalTime
+
+"""
+A local time string (i.e., with no associated timezone) in 24-hr `HH:mm[:ss[.SSS]]` format, e.g. `14:25` or `14:25:06` or `14:25:06.123`.  This scalar is very similar to the `LocalTime`, with the only difference being that `LocalEndTime` also allows `24:00` as a valid value to indicate midnight of the following day.  This is useful when using the scalar to represent the exclusive upper bound of a time block.
+"""
+scalar LocalEndTime
+
+"""
+A field whose value conforms to the standard internet email address format as specified in RFC822: https://www.w3.org/Protocols/rfc822/.
+"""
+scalar EmailAddress @specifiedBy(url: "https://www.w3.org/Protocols/rfc822/")
+
+"""Floats that will have a value less than 0."""
+scalar NegativeFloat
+
+"""Integers that will have a value less than 0."""
+scalar NegativeInt
+
+"""A string that cannot be passed as an empty value"""
+scalar NonEmptyString
+
+"""Floats that will have a value of 0 or more."""
+scalar NonNegativeFloat
+
+"""Integers that will have a value of 0 or more."""
+scalar NonNegativeInt
+
+"""Floats that will have a value of 0 or less."""
+scalar NonPositiveFloat
+
+"""Integers that will have a value of 0 or less."""
+scalar NonPositiveInt
+
+"""
+A field whose value conforms to the standard E.164 format as specified in: https://en.wikipedia.org/wiki/E.164. Basically this is +17895551234.
+"""
+scalar PhoneNumber
+
+"""Floats that will have a value greater than 0."""
+scalar PositiveFloat
+
+"""Integers that will have a value greater than 0."""
+scalar PositiveInt
+
+"""
+A field whose value conforms to the standard postal code formats for United States, United Kingdom, Germany, Canada, France, Italy, Australia, Netherlands, Spain, Denmark, Sweden, Belgium, India, Austria, Portugal, Switzerland or Luxembourg.
+"""
+scalar PostalCode
+
+"""Floats that will have a value of 0 or more."""
+scalar UnsignedFloat
+
+"""Integers that will have a value of 0 or more."""
+scalar UnsignedInt
+
+"""
+A field whose value conforms to the standard URL format as specified in RFC3986: https://www.ietf.org/rfc/rfc3986.txt.
+"""
+scalar URL
+
+"""
+The `BigInt` scalar type represents non-fractional signed whole numeric values.
+"""
+scalar BigInt
+
+"""
+The `BigInt` scalar type represents non-fractional signed whole numeric values.
+"""
+scalar Long
+
+"""The `Byte` scalar type represents byte value as a Buffer"""
+scalar Byte
+
+"""
+A field whose value is a generic Universally Unique Identifier: https://en.wikipedia.org/wiki/Universally_unique_identifier.
+"""
+scalar UUID
+
+"""
+A field whose value is a generic Universally Unique Identifier: https://en.wikipedia.org/wiki/Universally_unique_identifier.
+"""
+scalar GUID
+
+"""
+A field whose value is a hexadecimal: https://en.wikipedia.org/wiki/Hexadecimal.
+"""
+scalar Hexadecimal
+
+"""
+A field whose value is a hex color code: https://en.wikipedia.org/wiki/Web_colors.
+"""
+scalar HexColorCode @specifiedBy(url: "https://en.wikipedia.org/wiki/Web_colors")
+
+"""
+A field whose value is a CSS HSL color: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#hsl()_and_hsla().
+"""
+scalar HSL @specifiedBy(url: "https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#hsl()_and_hsla()")
+
+"""
+A field whose value is a CSS HSLA color: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#hsl()_and_hsla().
+"""
+scalar HSLA
+
+"""
+A field whose value is a IPv4 address: https://en.wikipedia.org/wiki/IPv4.
+"""
+scalar IPv4
+
+"""
+A field whose value is a IPv6 address: https://en.wikipedia.org/wiki/IPv6.
+"""
+scalar IPv6
+
+"""
+A field whose value is a ISBN-10 or ISBN-13 number: https://en.wikipedia.org/wiki/International_Standard_Book_Number.
+"""
+scalar ISBN
+
+"""
+A field whose value is a JSON Web Token (JWT): https://jwt.io/introduction.
+"""
+scalar JWT
+
+"""
+A field whose value is a valid decimal degrees latitude number (53.471): https://en.wikipedia.org/wiki/Latitude
+"""
+scalar Latitude
+
+"""
+A field whose value is a valid decimal degrees longitude number (53.471): https://en.wikipedia.org/wiki/Longitude
+"""
+scalar Longitude
+
+"""
+A field whose value is a IEEE 802 48-bit MAC address: https://en.wikipedia.org/wiki/MAC_address.
+"""
+scalar MAC
+
+"""
+A field whose value is a valid TCP port within the range of 0 to 65535: https://en.wikipedia.org/wiki/Transmission_Control_Protocol#TCP_ports
+"""
+scalar Port
+
+"""
+A field whose value is a CSS RGB color: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb()_and_rgba().
+"""
+scalar RGB
+
+"""
+A field whose value is a CSS RGBA color: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb()_and_rgba().
+"""
+scalar RGBA
+
+"""
+The `SafeInt` scalar type represents non-fractional signed whole numeric values that are considered safe as defined by the ECMAScript specification.
+"""
+scalar SafeInt @specifiedBy(url: "https://www.ecma-international.org/ecma-262/#sec-number.issafeinteger")
+
+"""A currency string, such as $21.25"""
+scalar USCurrency
+
+"""
+A field whose value is a Currency: https://en.wikipedia.org/wiki/ISO_4217.
+"""
+scalar Currency @specifiedBy(url: "https://en.wikipedia.org/wiki/ISO_4217")
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+"""
+The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSONObject @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+"""
+A field whose value is an International Bank Account Number (IBAN): https://en.wikipedia.org/wiki/International_Bank_Account_Number.
+"""
+scalar IBAN
+
+"""
+A field whose value conforms with the standard mongodb object ID as described here: https://docs.mongodb.com/manual/reference/method/ObjectId/#ObjectId. Example: 5e5677d71bdc2ae76344968c
+"""
+scalar ObjectID
+
+"""Represents NULL values"""
+scalar Void
+
+type Mutation {
+  signup(email: String!, password: String!, name: String!): AuthPayload
+  login(email: String!, password: String!): AuthPayload
+  root: String!
+  createUser(data: CreateUserInput!): User!
+  updateUser(id: Int!, data: UpdateUserInput!): User!
+  deleteUser(id: Int!): User
+  createBoard(data: CreateBoardInput!): Board!
+  updateBoard(id: Int!, data: UpdateBoardInput!): Board!
+  deleteBoard(id: Int!): Board
+  changeTaskGroupsOrder(boardId: Int!, taskGroupIds: [Int]!): Board
+  changeTaskOrder(boardId: Int!, fromTaskGroupId: Int!, toTaskGroupId: Int!, fromTasksArr: [Int]!, toTasksArr: [Int]!, movedTaskId: Int!): Board
+  createTask(data: CreateTaskInput!): Task!
+  checkTask(id: Int!): Task!
+  updateTask(id: Int!, data: UpdateTaskInput!): Task!
+  deleteTask(id: Int!): Task
+  createTaskGroup(data: CreateTaskGroupInput!): TaskGroup!
+  updateTaskGroup(id: Int!, data: UpdateTaskGroupInput!): TaskGroup!
+  deleteTaskGroup(id: Int!): TaskGroup
+  changeTaskOrderFromTaskGroup(taskGroupId: Int!, taskIds: [Int]!): TaskGroup
+  createTeam(data: CreateTeamInput!): Team!
+  updateTeam(id: Int!, data: UpdateTeamInput!): Team!
+  deleteTeam(id: Int!): Team
+  createUserOnTeam(data: CreateUserOnTeamInput!): UserOnTeam!
+  updateUserOnTeam(id: Int!, data: UpdateUserOnTeamInput!): UserOnTeam!
+  deleteUserOnTeam(id: Int!): UserOnTeam
+}
+
+type AuthPayload {
+  token: String
+  user: User
+}
+
+type Query {
+  root: String!
+  user(where: WhereUniqueUserInput!): User
+  allUsers(where: WhereUserInput, sortBy: [SortUserBy!], first: Int, skip: Int): [User]
+  board(where: WhereUniqueBoardInput!): Board
+  allBoards(where: WhereBoardInput, sortBy: [SortBoardBy!], first: Int, skip: Int): [Board]
+  authenticatedUser: User
+  task(where: WhereUniqueTaskInput!): Task
+  allTasks(where: WhereTaskInput, sortBy: [SortTaskBy!], first: Int, skip: Int): [Task]
+  taskGroup(where: WhereUniqueTaskGroupInput!): TaskGroup
+  allTaskGroups(where: WhereTaskGroupInput, sortBy: [SortTaskGroupBy!], first: Int, skip: Int): [TaskGroup]
+  team(where: WhereUniqueTeamInput!): Team
+  allTeams(where: WhereTeamInput, sortBy: [SortTeamBy!], first: Int, skip: Int): [Team]
+  userOnTeam(where: WhereUniqueUserOnTeamInput!): UserOnTeam
+  allUserOnTeams(where: WhereUserOnTeamInput, sortBy: [SortUserOnTeamBy!], first: Int, skip: Int): [UserOnTeam]
+}
+
+type User {
+  id: Int!
+  publicId: String
+  name: String
+  email: String
+  password: String
+  registeredAt: DateTime
+  updatedAt: DateTime
+  teams(where: WhereUserOnTeamInput, sortBy: [SortUserOnTeamBy], first: Int, skip: Int): [UserOnTeam]
+  boards(where: WhereBoardInput, sortBy: [SortBoardBy], first: Int, skip: Int): [Board]
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+  password: String!
+  teams: RelateToManyUserOnTeamInput
+  boards: RelateToManyBoardInput
+}
+
+input UpdateUserInput {
+  name: String
+  password: String
+  teams: RelateToManyUserOnTeamInput
+  boards: RelateToManyBoardInput
+}
+
+input WhereUserInput {
+  AND: [WhereUserInput]
+  OR: [WhereUserInput]
+  id_is: Int
+  id_not: Int
+  id_lt: Int
+  id_lte: Int
+  id_gt: Int
+  id_gte: Int
+  publicId_is: String
+  publicId_not: String
+  publicId_lt: String
+  publicId_lte: String
+  publicId_gt: String
+  publicId_gte: String
+  name_is: String
+  name_not: String
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  email_is: String
+  email_not: String
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  password_is: String
+  password_not: String
+  password_lt: String
+  password_lte: String
+  password_gt: String
+  password_gte: String
+  registeredAt_is: DateTime
+  registeredAt_not: DateTime
+  registeredAt_lt: DateTime
+  registeredAt_lte: DateTime
+  registeredAt_gt: DateTime
+  registeredAt_gte: DateTime
+  updatedAt_is: DateTime
+  updatedAt_not: DateTime
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  teams: WhereUserOnTeamInput
+  teams_is_null: Boolean
+  boards: WhereBoardInput
+  boards_is_null: Boolean
+}
+
+input WhereUniqueUserInput {
+  id: Int!
+}
+
+enum SortUserBy {
+  id_ASC
+  id_DESC
+  publicId_ASC
+  publicId_DESC
+  name_ASC
+  name_DESC
+  email_ASC
+  email_DESC
+  password_ASC
+  password_DESC
+  registeredAt_ASC
+  registeredAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  teams_ASC
+  teams_DESC
+  boards_ASC
+  boards_DESC
+}
+
+input RelateToManyUserInput {
+  create: [CreateUserInput]
+  connect: [WhereUniqueUserInput]
+  disconnect: [WhereUniqueUserInput]
+  disconnectAll: Boolean
+}
+
+input RelateToOneUserInput {
+  create: CreateUserInput
+  connect: WhereUniqueUserInput
+  disconnect: WhereUniqueUserInput
+  disconnectAll: Boolean
+}
+
+type Board {
+  id: Int!
+  name: String
+  description: String
+  taskGroups(where: WhereTaskGroupInput, sortBy: [SortTaskGroupBy], first: Int, skip: Int): [TaskGroup]
+  team: Team
+  owner: User
+}
+
+input CreateBoardInput {
+  name: String!
+  description: String
+  taskGroups: RelateToManyTaskGroupInput
+  team: RelateToOneTeamInput
+  owner: RelateToOneUserInput
+}
+
+input UpdateBoardInput {
+  name: String
+  description: String
+  taskGroups: RelateToManyTaskGroupInput
+  team: RelateToOneTeamInput
+  owner: RelateToOneUserInput
+}
+
+input WhereBoardInput {
+  AND: [WhereBoardInput]
+  OR: [WhereBoardInput]
+  id_is: Int
+  id_not: Int
+  id_lt: Int
+  id_lte: Int
+  id_gt: Int
+  id_gte: Int
+  name_is: String
+  name_not: String
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  description_is: String
+  description_not: String
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  taskGroups: WhereTaskGroupInput
+  taskGroups_is_null: Boolean
+  team: WhereTeamInput
+  team_is_null: Boolean
+  owner: WhereUserInput
+  owner_is_null: Boolean
+}
+
+input WhereUniqueBoardInput {
+  id: Int!
+}
+
+enum SortBoardBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  description_ASC
+  description_DESC
+  taskGroups_ASC
+  taskGroups_DESC
+  team_ASC
+  team_DESC
+  owner_ASC
+  owner_DESC
+}
+
+input RelateToManyBoardInput {
+  create: [CreateBoardInput]
+  connect: [WhereUniqueBoardInput]
+  disconnect: [WhereUniqueBoardInput]
+  disconnectAll: Boolean
+}
+
+input RelateToOneBoardInput {
+  create: CreateBoardInput
+  connect: WhereUniqueBoardInput
+  disconnect: WhereUniqueBoardInput
+  disconnectAll: Boolean
+}
+
+type Task {
+  id: Int!
+  name: String
+  checked: Boolean
+  order: Int
+  description: String
+  taskGroup: TaskGroup
+}
+
+input CreateTaskInput {
+  name: String!
+  description: String
+  taskGroup: RelateToOneTaskGroupInput
+}
+
+input UpdateTaskInput {
+  name: String
+  description: String
+  checked: Boolean
+  taskGroup: RelateToOneTaskGroupInput
+}
+
+input WhereTaskInput {
+  AND: [WhereTaskInput]
+  OR: [WhereTaskInput]
+  id_is: Int
+  id_not: Int
+  id_lt: Int
+  id_lte: Int
+  id_gt: Int
+  id_gte: Int
+  name_is: String
+  name_not: String
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  order_is: String
+  order_not: String
+  order_lt: String
+  order_lte: String
+  order_gt: String
+  order_gte: String
+  checked_is: Boolean
+  description_is: String
+  description_not: String
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  taskGroup: WhereTaskGroupInput
+  taskGroup_is_null: Boolean
+}
+
+input WhereUniqueTaskInput {
+  id: Int!
+}
+
+enum SortTaskBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  order_ASC
+  order_DESC
+  description_ASC
+  description_DESC
+  taskGroup_ASC
+  taskGroup_DESC
+}
+
+input RelateToManyTaskInput {
+  create: [CreateTaskInput]
+  connect: [WhereUniqueTaskInput]
+  disconnect: [WhereUniqueTaskInput]
+  disconnectAll: Boolean
+}
+
+input RelateToOneTaskInput {
+  create: CreateTaskInput
+  connect: WhereUniqueTaskInput
+  disconnect: WhereUniqueTaskInput
+  disconnectAll: Boolean
+}
+
+type TaskGroup {
+  id: Int!
+  name: String
+  description: String
+  order: Int
+  tasks(where: WhereTaskInput, sortBy: [SortTaskBy], first: Int, skip: Int): [Task]
+  board: Board
+}
+
+input CreateTaskGroupInput {
+  name: String!
+  description: String
+  tasks: RelateToManyTaskInput
+  board: RelateToOneBoardInput
+}
+
+input UpdateTaskGroupInput {
+  name: String
+  description: String
+  tasks: RelateToManyTaskInput
+  board: RelateToOneBoardInput
+}
+
+input WhereTaskGroupInput {
+  AND: [WhereTaskGroupInput]
+  OR: [WhereTaskGroupInput]
+  id_is: Int
+  id_not: Int
+  id_lt: Int
+  id_lte: Int
+  id_gt: Int
+  id_gte: Int
+  name_is: String
+  name_not: String
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  order_is: String
+  order_not: String
+  order_lt: String
+  order_lte: String
+  order_gt: String
+  order_gte: String
+  description_is: String
+  description_not: String
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  tasks: WhereTaskInput
+  tasks_is_null: Boolean
+  board: WhereBoardInput
+  board_is_null: Boolean
+}
+
+input WhereUniqueTaskGroupInput {
+  id: Int!
+}
+
+enum SortTaskGroupBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  description_ASC
+  description_DESC
+  order_ASC
+  order_DESC
+  tasks_ASC
+  tasks_DESC
+  board_ASC
+  board_DESC
+}
+
+input RelateToManyTaskGroupInput {
+  create: [CreateTaskGroupInput]
+  connect: [WhereUniqueTaskGroupInput]
+  disconnect: [WhereUniqueTaskGroupInput]
+  disconnectAll: Boolean
+}
+
+input RelateToOneTaskGroupInput {
+  create: CreateTaskGroupInput
+  connect: WhereUniqueTaskGroupInput
+  disconnect: WhereUniqueTaskGroupInput
+  disconnectAll: Boolean
+}
+
+type Team {
+  id: Int!
+  name: String
+  members(where: WhereUserOnTeamInput, sortBy: [SortUserOnTeamBy], first: Int, skip: Int): [UserOnTeam]
+  boards(where: WhereBoardInput, sortBy: [SortBoardBy], first: Int, skip: Int): [Board]
+}
+
+input CreateTeamInput {
+  name: String!
+  members: RelateToManyUserOnTeamInput
+  boards: RelateToManyBoardInput
+}
+
+input UpdateTeamInput {
+  name: String
+  members: RelateToManyUserOnTeamInput
+  boards: RelateToManyBoardInput
+}
+
+input WhereTeamInput {
+  AND: [WhereTeamInput]
+  OR: [WhereTeamInput]
+  id_is: Int
+  id_not: Int
+  id_lt: Int
+  id_lte: Int
+  id_gt: Int
+  id_gte: Int
+  publicId_is: String
+  publicId_not: String
+  publicId_lt: String
+  publicId_lte: String
+  publicId_gt: String
+  publicId_gte: String
+  name_is: String
+  name_not: String
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  members: WhereUserOnTeamInput
+  members_is_null: Boolean
+  boards: WhereBoardInput
+  boards_is_null: Boolean
+}
+
+input WhereUniqueTeamInput {
+  id: Int!
+}
+
+enum SortTeamBy {
+  id_ASC
+  id_DESC
+  publicId_ASC
+  publicId_DESC
+  name_ASC
+  name_DESC
+  members_ASC
+  members_DESC
+  boards_ASC
+  boards_DESC
+}
+
+input RelateToManyTeamInput {
+  create: [CreateTeamInput]
+  connect: [WhereUniqueTeamInput]
+  disconnect: [WhereUniqueTeamInput]
+  disconnectAll: Boolean
+}
+
+input RelateToOneTeamInput {
+  create: CreateTeamInput
+  connect: WhereUniqueTeamInput
+  disconnect: WhereUniqueTeamInput
+  disconnectAll: Boolean
+}
+
+type UserOnTeam {
+  id: Int!
+  user: User
+  team: Team
+  isAdmin: Boolean
+}
+
+input CreateUserOnTeamInput {
+  user: RelateToOneUserInput
+  team: RelateToOneTeamInput
+  isAdmin: Boolean
+}
+
+input UpdateUserOnTeamInput {
+  user: RelateToOneUserInput
+  team: RelateToOneTeamInput
+  isAdmin: Boolean
+}
+
+input WhereUserOnTeamInput {
+  AND: [WhereUserOnTeamInput]
+  OR: [WhereUserOnTeamInput]
+  id_is: Int
+  id_not: Int
+  id_lt: Int
+  id_lte: Int
+  id_gt: Int
+  id_gte: Int
+  user: WhereUserInput
+  user_is_null: Boolean
+  team: WhereTeamInput
+  team_is_null: Boolean
+  isAdmin_is: Boolean
+  isAdmin_not: Boolean
+  isAdmin_lt: Boolean
+  isAdmin_lte: Boolean
+  isAdmin_gt: Boolean
+  isAdmin_gte: Boolean
+}
+
+input WhereUniqueUserOnTeamInput {
+  id: Int!
+}
+
+enum SortUserOnTeamBy {
+  id_ASC
+  id_DESC
+  user_ASC
+  user_DESC
+  team_ASC
+  team_DESC
+  isAdmin_ASC
+  isAdmin_DESC
+}
+
+input RelateToManyUserOnTeamInput {
+  create: [CreateUserOnTeamInput]
+  connect: [WhereUniqueUserOnTeamInput]
+  disconnect: [WhereUniqueUserOnTeamInput]
+  disconnectAll: Boolean
+}
+
+input RelateToOneUserOnTeamInput {
+  create: CreateUserOnTeamInput
+  connect: WhereUniqueUserOnTeamInput
+  disconnect: WhereUniqueUserOnTeamInput
+  disconnectAll: Boolean
+}

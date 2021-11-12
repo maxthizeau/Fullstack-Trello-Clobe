@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  publicId     String        @unique
+  name         String        @db.VarChar(255)
+  registeredAt DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  email        String        @unique
+  password     String
+  role         Role          @default(USER)
+  boards       Board[]
+  teams        UsersOnTeam[]
+}
+
+model Team {
+  id      Int           @id @default(autoincrement())
+  name    String
+  boards  Board[]
+  members UsersOnTeam[]
+}
+
+model UsersOnTeam {
+  id      Int     @id @default(autoincrement())
+  user    User    @relation(fields: [userId], references: [id])
+  userId  Int
+  team    Team    @relation(fields: [teamId], references: [id])
+  teamId  Int
+  isAdmin Boolean
+}
+
+model Task {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String?
+  checked     Boolean   @default(false)
+  order       Int       @default(1)
+  taskGroupId Int
+  taskGroup   TaskGroup @relation(fields: [taskGroupId], references: [id], onDelete: Cascade)
+}
+
+model TaskGroup {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String?
+  boardId     Int
+  order       Int     @default(1)
+  board       Board   @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  tasks       Task[]
+}
+
+model Board {
+  id          Int         @id @default(autoincrement())
+  name        String
+  description String?
+  ownerId     Int
+  teamId      Int?
+  owner       User        @relation(fields: [ownerId], references: [id])
+  team        Team?       @relation(fields: [teamId], references: [id])
+  taskGroups  TaskGroup[]
+}
+
+enum Role {
+  USER
+  ADMIN
+}

@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User queries as logged in user Query allUsers should return the list of users when logged in as basic user 1`] = `
+Object {
+  "data": Object {
+    "allUsers": Array [
+      Object {
+        "email": "john.admin@seed.com",
+        "id": 1,
+        "name": "JohnAdmin",
+      },
+      Object {
+        "email": "bob.user@seed.com",
+        "id": 2,
+        "name": "BobUser",
+      },
+      Object {
+        "email": "max.user@seed.com",
+        "id": 3,
+        "name": "MaxUser",
+      },
+      Object {
+        "email": "michael.user@seed.com",
+        "id": 4,
+        "name": "MichaelUser",
+      },
+      Object {
+        "email": "this.is@my.email",
+        "id": 5,
+        "name": "NewUser",
+      },
+    ],
+  },
+}
+`;
